@@ -1,248 +1,296 @@
-<title>Skyler Gan</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Skyler Gan, electrical engineering diploma holder in Singapore. Site electrical work, production-line assembly and testing, and embedded projects.">
+<title>Skyler Gan | Electrical Engineering</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{
-  --ink:#0a0d13;
-  --card:#161b24;
-  --card-2:#1d232f;
-  --stroke:#2a3140;
-  --paper:#f0f2f6;
-  --muted:#8d96a8;
-  --accent:#ff9d4d;
-  --accent-2:#5fb4ff;
-  --violet:#a48bff;
-  --display:'Sora',system-ui,sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,monospace;
-  --script:'Instrument Serif',Georgia,serif;
+  --bg:#f5f4f0;--card:#ffffff;--line:#dedbd3;--ink:#1b1c1e;--mut:#5f646a;--acc:#2545d3;--on-acc:#ffffff;
+  --pad:clamp(16px,4vw,40px);
+  --display:'Bricolage Grotesque','Arial Narrow',sans-serif;
+  --text:'Instrument Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,'Courier New',monospace;
 }
 *{box-sizing:border-box}
-body{
-  margin:0;
-  color:var(--paper);
-  font-family:var(--display);
-  line-height:1.6;
-  background-color:var(--ink);
-  background-image:
-    radial-gradient(ellipse 900px 560px at 12% -8%, rgba(255,157,77,.16), transparent 60%),
-    radial-gradient(ellipse 800px 600px at 92% 8%, rgba(95,180,255,.12), transparent 60%),
-    radial-gradient(ellipse 1000px 700px at 50% 115%, rgba(164,139,255,.10), transparent 60%);
-  background-repeat:no-repeat;
-  padding:0 22px 100px;
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);line-height:1.65}
+#waves{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.wrap{max-width:calc(1060px + 2*var(--pad));margin:0 auto;padding:0 var(--pad) 70px;position:relative;z-index:1}
+a{color:var(--acc)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--acc);outline-offset:3px;border-radius:6px}
+h1,h2,h3,h4{font-family:var(--display);margin:0}
+h1,h2{text-wrap:balance}
+h3,h4{text-wrap:pretty}
+figure{margin:0}
+img{max-width:100%}
+
+.top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:calc(1060px + 2*var(--pad));margin:0 auto;padding:0 var(--pad);display:flex;justify-content:space-between;align-items:center;gap:14px;min-height:60px}
+.logo{font:700 1.1rem var(--display);text-decoration:none;color:var(--ink);white-space:nowrap;min-height:44px;display:inline-flex;align-items:center}
+.top nav{display:flex;gap:2px}
+.top nav a{text-decoration:none;color:var(--mut);font-size:.9rem;font-weight:500;padding:0 12px;border-radius:999px;min-height:44px;display:inline-flex;align-items:center;white-space:nowrap}
+.top nav a:hover{color:var(--ink);background:var(--card)}
+
+.hero{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(28px,5vw,60px);align-items:center;padding:clamp(40px,8vw,96px) 0 clamp(44px,8vw,90px)}
+.eyebrow{font:500 .76rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc);margin:0 0 16px}
+.hero h1{font-size:clamp(2rem,4.6vw,3.3rem);font-weight:800;line-height:1.06;letter-spacing:-.015em}
+.hero p.lead{max-width:56ch;color:#43484e;font-size:1.08rem;margin:20px 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.btn{font:600 .92rem var(--text);border-radius:999px;padding:0 22px;min-height:46px;display:inline-flex;align-items:center;text-decoration:none;border:1px solid var(--line);color:var(--ink);background:var(--card)}
+.btn:hover{border-color:var(--acc)}
+.btn.pri{background:var(--acc);color:var(--on-acc);border-color:var(--acc)}
+.photo{width:100%;height:auto;display:block;border-radius:18px;border:1px solid var(--line)}
+figcaption{font:400 .75rem var(--mono);color:var(--mut);margin-top:8px}
+
+section{margin:0 0 76px;scroll-margin-top:76px}
+h2{font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px}
+.card p{margin:0;color:#33373c;max-width:68ch}
+.meta{font:500 .75rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--acc)}
+.when{font:400 .75rem var(--mono);color:var(--mut)}
+
+/* experience */
+.roles{margin-top:24px;padding:0}
+.role{display:grid;grid-template-columns:250px 1fr;gap:10px 32px;padding:26px 28px}
+.role+.role{border-top:1px solid var(--line)}
+.role h3{font-size:1.3rem;font-weight:700;line-height:1.2}
+.role .who{display:grid;gap:6px;align-content:start}
+.role .what{display:grid;gap:10px}
+
+/* projects */
+.stack{display:grid;gap:18px;margin-top:24px}
+.proj{display:grid;gap:16px}
+.proj h3{font-size:1.5rem;font-weight:700;line-height:1.18;max-width:28ch}
+.head{display:flex;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;align-items:baseline}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px 34px}
+.cols h4{font-size:1.08rem;font-weight:700;margin-bottom:6px}
+.stats{display:grid;grid-template-columns:auto 1fr;gap:14px 40px;align-items:end;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:16px 0}
+.stats .grp{display:grid;gap:8px}
+.stats .lab{font:500 .75rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--mut)}
+.stats .row{display:flex;flex-wrap:wrap;gap:8px 34px}
+.stats .n span{display:block;font:400 .75rem var(--mono);color:var(--mut)}
+.stats .n b{font:700 1.55rem var(--display);color:var(--acc);font-variant-numeric:tabular-nums;white-space:nowrap}
+.stats .n b i{font-style:normal;color:var(--mut);font-weight:500}
+.media{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.media.four{grid-template-columns:repeat(4,1fr)}
+.media img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:12px;border:1px solid var(--line)}
+.media img.sk{object-fit:contain;background:#fff}
+
+/* other work */
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
+.tile{display:flex;flex-direction:column;gap:12px}
+.tile h3{font-size:1.3rem;font-weight:700;line-height:1.2}
+.shot{width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top;display:block;border-radius:12px;border:1px solid var(--line)}
+.links{display:flex;gap:6px 20px;flex-wrap:wrap;font-weight:600;font-size:.94rem;margin-top:auto}
+.links a{min-height:44px;display:inline-flex;align-items:center}
+.note{margin-top:18px;display:grid;gap:8px}
+.note h3{font-size:1.15rem;font-weight:700}
+
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:24px}
+.skills .card{padding:22px 24px;display:grid;gap:6px;align-content:start}
+.skills h3{font:500 .75rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--acc)}
+
+.contact{padding:clamp(26px,5vw,48px);display:grid;gap:12px}
+.contact p{color:var(--mut);max-width:56ch}
+footer{color:var(--mut);font:400 .76rem var(--mono)}
+
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero figure{max-width:520px}
+  .media.four{grid-template-columns:repeat(2,1fr)}
 }
-a{color:inherit;text-decoration:none}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0}
-.wrap{max-width:1080px;margin:0 auto}
-button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-
-/* nav */
-nav{display:flex;align-items:center;justify-content:space-between;padding:26px 4px;flex-wrap:wrap;gap:14px}
-.logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.15rem}
-.logo em{font-family:var(--script);font-style:italic;font-size:1.7rem;color:var(--accent);font-weight:400}
-.pillnav{display:flex;gap:4px;background:rgba(255,255,255,.04);border:1px solid var(--stroke);border-radius:999px;padding:5px}
-.pillnav a{padding:9px 20px;border-radius:999px;font-size:.85rem;color:var(--muted);font-weight:500}
-.pillnav a.active{background:var(--card-2);color:var(--paper)}
-.social{display:flex;gap:8px}
-.social a{width:38px;height:38px;border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,.03);display:flex;align-items:center;justify-content:center}
-.social a:hover{border-color:var(--accent);color:var(--accent)}
-
-/* hero */
-.hero{padding:56px 4px 30px}
-.eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
-.hero h1{font-size:clamp(2.6rem,6.4vw,4.1rem);font-weight:800;letter-spacing:-.01em}
-.hero h1 span{color:var(--accent)}
-.hero p{max-width:56ch;color:var(--muted);font-size:1.08rem;margin:18px 0 0}
-.chiprow{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
-.chiprow span{font-family:var(--mono);font-size:.78rem;background:rgba(255,255,255,.04);border:1px solid var(--stroke);padding:8px 16px;border-radius:999px;color:var(--paper)}
-
-section{margin:46px 4px}
-.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:22px;flex-wrap:wrap}
-.section-head h2{font-size:clamp(1.5rem,3.2vw,1.85rem);font-weight:700}
-.section-head p{color:var(--muted);font-size:.92rem;margin:0}
-
-/* project bento */
-.bento{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}
-.pcard{
-  background:linear-gradient(180deg,var(--card),var(--card-2));
-  border:1px solid var(--stroke);
-  border-radius:22px;
-  padding:26px;
-  display:flex;flex-direction:column;gap:18px;
-  position:relative;
-  box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
-}
-.pcard .top{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
-.pcard h3{font-size:1.55rem;font-weight:700}
-.pcard .kicker{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--muted);margin-bottom:6px}
-.srcbtn{
-  display:flex;align-items:center;gap:7px;flex-shrink:0;
-  background:rgba(255,255,255,.06);border:1px solid var(--stroke);
-  padding:8px 16px 8px 12px;border-radius:999px;font-size:.8rem;font-weight:500;
-  backdrop-filter:blur(6px);
-}
-.srcbtn:hover{border-color:var(--accent);color:var(--accent)}
-.pcard p.desc{color:var(--muted);font-size:.96rem;max-width:none}
-.pcard p.desc b{color:var(--paper);font-weight:700}
-.tags{display:flex;flex-wrap:wrap;gap:8px}
-.tags span{font-family:var(--mono);font-size:.7rem;background:rgba(255,255,255,.05);border:1px solid var(--stroke);padding:5px 12px;border-radius:999px;color:var(--muted)}
-.linkline{display:flex;gap:20px;font-size:.85rem;font-weight:600}
-.linkline a:hover{color:var(--accent)}
-.linkline a::after{content:" \2197"}
-
-/* mockup frames */
-.frame{border-radius:16px;border:1px solid var(--stroke);background:#05070b;overflow:hidden;position:relative;aspect-ratio:16/10}
-.frame .glow{position:absolute;inset:0}
-
-/* footer */
-footer{border-top:1px solid var(--stroke);margin:80px 4px 0;padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:.85rem}
-
-@media (max-width:820px){
-  .bento{grid-template-columns:1fr}
-  nav{justify-content:center;text-align:center}
+@media (max-width:600px){
+  .role,.cols,.pair,.skills{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .bar{gap:8px}
+  .top nav{overflow-x:auto;scrollbar-width:none;margin-right:calc(-1*var(--pad));padding-right:var(--pad)}
+  .top nav::-webkit-scrollbar{display:none}
+  .top nav a{padding:0 9px;font-size:.86rem}
+  .card{padding:22px 18px;border-radius:16px}
+  .role{padding:22px 18px}
+  .media,.media.four{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px;scrollbar-width:thin}
+  .media figure{flex:0 0 78%;scroll-snap-align:start}
+  .stats .n b{font-size:1.35rem}
+  .hero p.lead{font-size:1rem}
 }
 </style>
+</head>
+<body>
+
+<canvas id="waves" aria-hidden="true"></canvas>
+
+<header class="top">
+  <div class="bar">
+    <a class="logo" href="#top">Skyler Gan</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#software">Software</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
 <div class="wrap">
+<main id="top">
 
-  <nav>
-    <div class="logo"><em>S</em>Skyler Gan</div>
-    <div class="pillnav">
-      <a href="#top" class="active">Home</a>
-      <a href="#projects">Projects</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <div class="social">
-      <a href="https://github.com/Bottlenecktrip" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.94c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.9-.38 2.88-.39.98.01 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.73.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.08.78 2.17v3.22c0 .3.2.66.79.55C20.71 21.38 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5Z"/></svg>
-      </a>
-      <a href="mailto:skylergan.23@ichat.sp.edu.sg" aria-label="Email">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>
-      </a>
-    </div>
-  </nav>
-
-  <div class="hero" id="top">
-    <p class="eyebrow">Aspiring Engineer · Singapore Polytechnic</p>
-    <h1>I build things that move<br>real <span>current</span>, not just pixels.</h1>
-    <p>Electrical & Mechanical Engineering student who'd rather wire a physical board than mock one up. Most of what's below started as a school brief and turned into something I kept building after the deadline.</p>
-    <div class="chiprow">
-      <span>Electrical Engineering</span>
-      <span>Embedded Systems</span>
-      <span>3D Web</span>
-      <span>Full-stack</span>
+<div class="hero">
+  <div>
+    <p class="eyebrow">Electrical engineering &middot; Singapore</p>
+    <h1>I install, wire and test electrical systems, and improve the tools used to test them.</h1>
+    <p class="lead">I bring three years of hands-on hardware experience, including site electrical work at Moryo Engineering and production-line assembly and testing at Carrier Transicold. I hold a Diploma in Engineering with Business from Singapore Polytechnic, and I program microcontrollers and write software when the job calls for it.</p>
+    <div class="cta">
+      <a class="btn pri" href="#experience">View my work</a>
+      <a class="btn" href="https://www.linkedin.com/in/skyler-gan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Bottlenecktrip" target="_blank" rel="noopener">GitHub</a>
     </div>
   </div>
-
-  <section id="projects">
-    <div class="section-head">
-      <h2>Selected work</h2>
-      <p>2 projects, more on the way</p>
-    </div>
-
-    <div class="bento">
-
-      <div class="pcard">
-        <div class="top">
-          <div>
-            <p class="kicker">SP SCHOOL OF EEE · MAR&ndash;AUG 2026</p>
-            <h3>Energy Learning Journey</h3>
-          </div>
-          <a class="srcbtn" href="https://github.com/Bottlenecktrip/energy-learning-journey" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.94c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.9-.38 2.88-.39.98.01 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.73.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.08.78 2.17v3.22c0 .3.2.66.79.55C20.71 21.38 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5Z"/></svg>
-            Source
-          </a>
-        </div>
-
-        <div class="frame">
-          <svg class="glow" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <filter id="blur1"><feGaussianBlur stdDeviation="7"/></filter>
-              <linearGradient id="lineA" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#ff9d4d"/><stop offset="1" stop-color="#5fb4ff"/>
-              </linearGradient>
-            </defs>
-            <rect width="400" height="250" fill="#05070b"/>
-            <g opacity=".25" stroke="#2a3140">
-              <line x1="0" y1="60" x2="400" y2="60"/><line x1="0" y1="120" x2="400" y2="120"/><line x1="0" y1="180" x2="400" y2="180"/>
-              <line x1="100" y1="0" x2="100" y2="250"/><line x1="200" y1="0" x2="200" y2="250"/><line x1="300" y1="0" x2="300" y2="250"/>
-            </g>
-            <path d="M70 170 L170 130 L240 150 L330 90" stroke="url(#lineA)" stroke-width="2.5" fill="none" filter="url(#blur1)" opacity=".9"/>
-            <path d="M70 170 L170 130 L240 150 L330 90" stroke="url(#lineA)" stroke-width="1.5" fill="none"/>
-            <circle cx="70" cy="170" r="14" fill="#ff9d4d" opacity=".18"/><circle cx="70" cy="170" r="6" fill="#ff9d4d"/>
-            <circle cx="170" cy="130" r="12" fill="#5fb4ff" opacity=".18"/><circle cx="170" cy="130" r="5" fill="#5fb4ff"/>
-            <circle cx="240" cy="150" r="12" fill="#a48bff" opacity=".18"/><circle cx="240" cy="150" r="5" fill="#a48bff"/>
-            <circle cx="330" cy="90" r="14" fill="#5fb4ff" opacity=".18"/><circle cx="330" cy="90" r="6" fill="#5fb4ff"/>
-            <rect x="290" y="20" width="96" height="26" rx="13" fill="#161b24" stroke="#2a3140"/>
-            <text x="338" y="37" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8d96a8" letter-spacing="1">GENERATION</text>
-            <rect x="16" y="200" width="120" height="26" rx="13" fill="#161b24" stroke="#2a3140"/>
-            <text x="76" y="217" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8d96a8" letter-spacing="1">DISTRIBUTION</text>
-          </svg>
-        </div>
-
-        <p class="desc">An interactive power-grid exhibit for SP Group, CHINT and Siemens. <b>Built the 3D grid model from scratch in Three.js</b> and <b>programmed the ESP32 hub</b> that keeps it synced with a physical diorama in real time.</p>
-        <div class="tags"><span>Three.js</span><span>ESP32 / C++</span><span>ESP-NOW</span><span>Wi-Fi API</span></div>
-        <div class="linkline"><a href="https://claude.ai/artifact/6xM8zY1tMwkqVgfkCez9Dk" target="_blank" rel="noopener">Try the live model</a></div>
-      </div>
-
-      <div class="pcard">
-        <div class="top">
-          <div>
-            <p class="kicker">PERSONAL PROJECT</p>
-            <h3>Oura Dashboard</h3>
-          </div>
-          <a class="srcbtn" href="https://github.com/Bottlenecktrip/oura-dashboard" target="_blank" rel="noopener">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55v-1.94c-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.68-1.28-1.68-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.56-.29-5.25-1.28-5.25-5.7 0-1.26.45-2.29 1.18-3.09-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18.92-.26 1.9-.38 2.88-.39.98.01 1.96.13 2.88.39 2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.73.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.27 5.69.42.36.78 1.08.78 2.17v3.22c0 .3.2.66.79.55C20.71 21.38 24 17.08 24 12c0-6.27-5.23-11.5-12-11.5Z"/></svg>
-            Source
-          </a>
-        </div>
-
-        <div class="frame">
-          <svg class="glow" viewBox="0 0 400 250" xmlns="http://www.w3.org/2000/svg">
-            <rect width="400" height="250" fill="#05070b"/>
-            <g transform="translate(140,125)">
-              <circle r="72" fill="none" stroke="#1d232f" stroke-width="14"/>
-              <circle r="72" fill="none" stroke="#ff9d4d" stroke-width="14" stroke-linecap="round" stroke-dasharray="345 452" transform="rotate(-90)"/>
-              <circle r="50" fill="none" stroke="#1d232f" stroke-width="11"/>
-              <circle r="50" fill="none" stroke="#5fb4ff" stroke-width="11" stroke-linecap="round" stroke-dasharray="220 314" transform="rotate(-90)"/>
-              <text text-anchor="middle" dy="-4" font-family="Sora" font-weight="700" font-size="30" fill="#f0f2f6">83</text>
-              <text text-anchor="middle" dy="18" font-family="JetBrains Mono" font-size="9" fill="#8d96a8" letter-spacing="1">SLEEP</text>
-            </g>
-            <path d="M250 190 L275 175 L295 195 L320 150 L345 172 L370 140" stroke="#a48bff" stroke-width="2" fill="none" opacity=".85"/>
-            <rect x="248" y="55" width="118" height="26" rx="13" fill="#161b24" stroke="#2a3140"/>
-            <text x="307" y="72" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#8d96a8" letter-spacing="1">READINESS 82</text>
-          </svg>
-        </div>
-
-        <p class="desc">A dashboard for my own Oura Ring data, since the stock app hands you a number without saying what to do with it. <b>Custom zoomable charts</b> and a <b>plain-language explainer</b> under every metric.</p>
-        <div class="tags"><span>Next.js</span><span>TypeScript</span><span>Chart.js</span><span>visx</span></div>
-      </div>
-
-    </div>
-  </section>
-
-  <section>
-    <div class="section-head"><h2>Education</h2></div>
-    <div class="bento" style="grid-template-columns:1fr 1fr 1fr">
-      <div class="pcard" style="border-radius:18px;padding:22px">
-        <p class="kicker">DIPLOMA</p>
-        <h3 style="font-size:1.1rem">Engineering with Business</h3>
-        <p class="desc" style="font-size:.85rem">Singapore Polytechnic<br>Jan 2022 &ndash; Aug 2026</p>
-      </div>
-      <div class="pcard" style="border-radius:18px;padding:22px">
-        <p class="kicker">FOCUS</p>
-        <h3 style="font-size:1.1rem">Electrical / Mechanical</h3>
-        <p class="desc" style="font-size:.85rem">plus a Marketing track</p>
-      </div>
-      <div class="pcard" style="border-radius:18px;padding:22px">
-        <p class="kicker">ALSO</p>
-        <h3 style="font-size:1.1rem">Model Cabinet</h3>
-        <p class="desc" style="font-size:.85rem">certificate of participation</p>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact">
-    <div>Skyler Gan · Singapore</div>
-    <div><a href="mailto:skylergan.23@ichat.sp.edu.sg">skylergan.23@ichat.sp.edu.sg</a></div>
-  </footer>
-
+  <figure>
+    <img class="photo" src="img/openhouse.jpg" alt="Skyler pointing at the Jurong Power Station on the physical scale model, with the 3D grid model on a screen beside it" width="1000" height="1078">
+    <figcaption>Presenting my exhibit at the Singapore Polytechnic Open House.</figcaption>
+  </figure>
 </div>
+
+<section id="experience">
+  <h2>Experience</h2>
+  <div class="card roles">
+    <div class="role">
+      <div class="who"><h3>Carrier Transicold</h3><span class="meta">Production trainee</span></div>
+      <div class="what">
+        <p>I assembled, wired and tested the electrical systems of container refrigeration units on the production line. I installed EEV solenoid coils, temperature sensors and high-voltage fuses, and secured busbars and terminal blocks with torque tools.</p>
+        <p>I ran contact resistance tests on 3-pole circuit breakers, scanned component IDs for traceability, and completed pre-inspection checks on wiring, sealing and sensor placement before each unit moved on.</p>
+      </div>
+    </div>
+    <div class="role">
+      <div class="who"><h3>Moryo Engineering</h3><span class="meta">Electrical internship</span></div>
+      <div class="what">
+        <p>I carried out lightning protection and earthing resistance checks, roof inspections and the repairs that followed. I laid cable, installed trunking and conduit, tested motors, and converted conventional lighting to LED.</p>
+        <p>I also completed GMP (Good Manufacturing Practices) safety courses.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="stack">
+
+    <article class="card proj">
+      <div class="head"><span class="meta">Carrier Transicold</span><span class="when">Apr 2026</span></div>
+      <h3>Proposed redesign of a production-line continuity tester</h3>
+      <p>The line's handheld continuity tester had contact pins that wobbled and sank during use. Operators had to stop and straighten them by hand, and good units sometimes failed. I proposed a structural redesign: a reinforced internal bracket, a plastic insulator to stop the pins sinking, spring-loaded pins on a ring lug connection, and an LED indicator on the handheld unit.</p>
+      <div class="stats">
+        <div class="grp"><span class="lab">Today</span><div class="row"><div class="n"><b>7 min</b><span>lost per shift</span></div></div></div>
+        <div class="grp"><span class="lab">Projected, not yet measured</span><div class="row"><div class="n"><b><i>20 s &rarr;</i> 15 s</b><span>average test time</span></div><div class="n"><b><i>about 85% &rarr;</i> 99%</b><span>first-pass accuracy</span></div></div></div>
+      </div>
+      <p>I presented the proposal to the floor team and team leaders, who backed it, and prepared a pitch to upper management for a Line 3 prototype.</p>
+      <div class="media">
+        <figure><img src="img/tester-inside.jpg" alt="The original continuity tester opened up, showing the three contact pins and wiring" loading="lazy" width="900" height="840"><figcaption>Inside the original tester</figcaption></figure>
+        <figure><img class="sk" src="img/sketch-pins.jpg" alt="Hand sketch of the redesign showing spring-loaded pins, a ring lug with cable connection and a black holder" loading="lazy" width="1000" height="516"><figcaption>Concept sketch: spring-loaded pins on a ring lug</figcaption></figure>
+        <figure><img class="sk" src="img/sketch-led.jpg" alt="Hand sketch of the tester enclosure with a light indicator above the reset and check buttons" loading="lazy" width="700" height="908"><figcaption>Concept sketch: LED indicator</figcaption></figure>
+      </div>
+    </article>
+
+    <article class="card proj">
+      <div class="head"><span class="meta">Singapore Polytechnic Open House</span><span class="when">May to Jun 2026</span></div>
+      <h3>Energy Learning Journey exhibit: control hub and scale model</h3>
+      <div class="cols">
+        <div>
+          <h4>Control hub</h4>
+          <p>I designed, wired and programmed an ESP32 control hub with a joystick, button, buzzer and zone LEDs, linking the physical model to a 3D model on screen. A second ESP32 in a touchscreen remote connects over ESP-NOW, so a presenter can run the exhibit from across the room. When the planned gesture sensor would not respond, I moved its function to the joystick.</p>
+        </div>
+        <div>
+          <h4>Scale model, team lead</h4>
+          <p>I led the team that designed and built a physical scale model of Singapore's power grid, covering generation, transmission and distribution, in one and a half weeks. We tried several approaches for the lighting and the moulded cooling towers before settling on the ones that worked, and delivered it on time for the Open House.</p>
+        </div>
+      </div>
+      <div class="media four">
+        <figure><img src="img/hub.jpg" alt="The ESP32 hub with coloured zone LEDs and a joystick wired to it, next to a laptop running the 3D grid model" loading="lazy" width="1100" height="770"><figcaption>ESP32 hub and joystick</figcaption></figure>
+        <figure><img src="img/model-generation.jpg" alt="Generation zone of the scale model: Jurong Power Station, solar panels, coolant towers and hydrogen fuel cells" loading="lazy" width="1000" height="750"><figcaption>Generation</figcaption></figure>
+        <figure><img src="img/model-transmission.jpg" alt="Transmission zone of the scale model: lit pylons and transformers" loading="lazy" width="1000" height="750"><figcaption>Transmission</figcaption></figure>
+        <figure><img src="img/model-distribution.jpg" alt="Distribution zone of the scale model: lit HDB blocks, an EV carpark and the printed explainer board" loading="lazy" width="1000" height="750"><figcaption>Distribution</figcaption></figure>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section id="software">
+  <h2>Software</h2>
+  <div class="pair">
+    <article class="card tile">
+      <a href="https://bottlenecktrip.github.io/energy-learning-journey/" target="_blank" rel="noopener"><img class="shot" src="img/demo-grid.jpg" alt="The interactive 3D power grid model showing generation, transmission and distribution zones" loading="lazy" width="800" height="559"></a>
+      <span class="meta">JavaScript &middot; Three.js</span>
+      <h3>Interactive 3D model of the power grid</h3>
+      <p>I taught myself JavaScript and Three.js to build an interactive 3D model of the grid for the same exhibit. Visitors click through generation, transmission and distribution, with information panels and cited sources at each stage. Every transmission cable was plotted and routed by hand in code.</p>
+      <div class="links"><a href="https://bottlenecktrip.github.io/energy-learning-journey/" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/Bottlenecktrip/energy-learning-journey" target="_blank" rel="noopener">Source</a></div>
+    </article>
+    <article class="card tile">
+      <a href="https://bottlenecktrip.github.io/oura-dashboard/" target="_blank" rel="noopener"><img class="shot" src="img/demo-oura.jpg" alt="The health dashboard showing sleep, readiness and activity scores" loading="lazy" width="799" height="568"></a>
+      <span class="meta">Next.js &middot; Python</span>
+      <h3>Health analytics dashboard</h3>
+      <p>A personal project: a Python pipeline and a Next.js dashboard for my own Oura Ring data, with interactive charts and a review of each night. The public demo runs on sample data, and my own data stays on my machine.</p>
+      <div class="links"><a href="https://bottlenecktrip.github.io/oura-dashboard/" target="_blank" rel="noopener">Live demo</a><a href="https://github.com/Bottlenecktrip/oura-dashboard" target="_blank" rel="noopener">Source</a></div>
+    </article>
+  </div>
+  <div class="card note">
+    <div class="head"><span class="meta">Overseas community project, Indonesia</span><span class="when">Sep to Oct 2024</span></div>
+    <p>Two weeks on a Learning Express programme with students from Universitas Muhammadiyah Surakarta. We interviewed villagers about problems such as unreliable electricity and safety, and built a safety fence for a school beside the sea.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Skills and education</h2>
+  <div class="skills">
+    <div class="card"><h3>Electrical</h3><p>Electrical installation and maintenance, earthing and lightning protection testing, contact resistance and continuity testing, cable laying, trunking and conduit, motor testing, busbar and terminal work, LED retrofits.</p></div>
+    <div class="card"><h3>Embedded systems</h3><p>ESP32 microcontrollers, sensor and actuator wiring, ESP-NOW wireless links, C++ firmware.</p></div>
+    <div class="card"><h3>Delivery</h3><p>Team leadership, working to a deadline, process improvement proposals, presenting to a team.</p></div>
+    <div class="card"><h3>Software</h3><p>JavaScript, Three.js, Python, Next.js.</p></div>
+    <div class="card" style="grid-column:1/-1"><h3>Education</h3><p>Diploma in Engineering with Business, Singapore Polytechnic, 2022 to 2026. Specialised in electrical engineering, with mechanical engineering and marketing.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="card contact">
+    <h2>Get in touch</h2>
+    <p>I am open to electrical and engineering roles. If my experience fits what your team needs, I would be glad to hear from you.</p>
+    <div class="cta" style="margin-top:6px">
+      <a class="btn pri" href="https://www.linkedin.com/in/skyler-gan/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/Bottlenecktrip" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>Skyler Gan, Singapore</footer>
+</div>
+
+<script>
+(function(){
+  var cv=document.getElementById('waves'),ctx=cv.getContext('2d');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var t=0,L=[],lastW=0;
+  for(var i=0;i<8;i++){L.push({y:.1+i*.115,amp:16+(i%3)*13,k:1.2+i*.34,sp:.5+(i%4)*.22,ph:i*1.7,al:.08+(i%3)*.04});}
+  function size(){var d=Math.min(window.devicePixelRatio||1,2);cv.width=Math.round(cv.clientWidth*d);cv.height=Math.round(cv.clientHeight*d);ctx.setTransform(d,0,0,d,0,0);lastW=cv.clientWidth;}
+  function draw(){
+    var w=cv.clientWidth,h=cv.clientHeight;ctx.clearRect(0,0,w,h);ctx.lineWidth=1.5;
+    var s=Math.min(1,w/1100),kmax=Math.max(1.2,w/350);
+    for(var i=0;i<L.length;i++){
+      var l=L[i],k=Math.min(l.k,kmax),amp=l.amp*s;ctx.beginPath();
+      for(var x=0;x<=w;x+=6){
+        var a=(x/w)*k*Math.PI*2+t*l.sp+l.ph;
+        var y=h*l.y+Math.sin(a)*amp+Math.sin(a*2.3+l.ph)*amp*.3;
+        if(x){ctx.lineTo(x,y);}else{ctx.moveTo(x,y);}
+      }
+      ctx.strokeStyle='rgba(37,69,211,'+l.al+')';ctx.stroke();
+    }
+  }
+  function loop(){t+=.012;draw();requestAnimationFrame(loop);}
+  window.addEventListener('resize',function(){if(cv.clientWidth!==lastW||reduce){size();draw();}});
+  size();draw();
+  if(!reduce){requestAnimationFrame(loop);}
+})();
+</script>
+
+</body>
+</html>
