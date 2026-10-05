@@ -75,7 +75,7 @@ h2{font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:800;letter-spacing:-.01em}
 .stats .n b{font:700 1.55rem var(--display);color:var(--acc);font-variant-numeric:tabular-nums;white-space:nowrap}
 .stats .n b i{font-style:normal;color:var(--mut);font-weight:500}
 .media{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.media.four{grid-template-columns:repeat(4,1fr)}
+.media.five{grid-template-columns:repeat(5,1fr)}
 .media img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;display:block;border-radius:12px;border:1px solid var(--line)}
 .media img.sk{object-fit:contain;background:#fff}
 
@@ -100,7 +100,7 @@ footer{color:var(--mut);font:400 .76rem var(--mono)}
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
   .hero figure{max-width:520px}
-  .media.four{grid-template-columns:repeat(2,1fr)}
+  .media.five{grid-template-columns:repeat(3,1fr)}
 }
 @media (max-width:600px){
   .role,.cols,.pair,.skills{grid-template-columns:1fr}
@@ -111,7 +111,7 @@ footer{color:var(--mut);font:400 .76rem var(--mono)}
   .top nav a{padding:0 9px;font-size:.86rem}
   .card{padding:22px 18px;border-radius:16px}
   .role{padding:22px 18px}
-  .media,.media.four{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px;scrollbar-width:thin}
+  .media,.media.five{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:6px;scrollbar-width:thin}
   .media figure{flex:0 0 78%;scroll-snap-align:start}
   .stats .n b{font-size:1.35rem}
   .hero p.lead{font-size:1rem}
@@ -146,8 +146,7 @@ footer{color:var(--mut);font:400 .76rem var(--mono)}
     </div>
   </div>
   <figure>
-    <img class="photo" src="img/openhouse.jpg" alt="Skyler pointing at the Jurong Power Station on the physical scale model, with the 3D grid model on a screen beside it" width="1000" height="1078">
-    <figcaption>Presenting my exhibit at the Singapore Polytechnic Open House.</figcaption>
+    <img class="photo" src="img/profile.jpg" alt="Skyler Gan standing with his arms crossed in front of a lily pond and a glass building" width="600" height="700">
   </figure>
 </div>
 
@@ -204,7 +203,8 @@ footer{color:var(--mut);font:400 .76rem var(--mono)}
           <p>I led the team that designed and built a physical scale model of Singapore's power grid, covering generation, transmission and distribution, in one and a half weeks. We tried several approaches for the lighting and the moulded cooling towers before settling on the ones that worked, and delivered it on time for the Open House.</p>
         </div>
       </div>
-      <div class="media four">
+      <div class="media five">
+        <figure><img src="img/openhouse.jpg" alt="Skyler presenting the scale model and the 3D grid model to visitors at the Open House" loading="lazy" width="1000" height="1078"><figcaption>Presenting at the Open House</figcaption></figure>
         <figure><img src="img/hub.jpg" alt="The ESP32 hub with coloured zone LEDs and a joystick wired to it, next to a laptop running the 3D grid model" loading="lazy" width="1100" height="770"><figcaption>ESP32 hub and joystick</figcaption></figure>
         <figure><img src="img/model-generation.jpg" alt="Generation zone of the scale model: Jurong Power Station, solar panels, coolant towers and hydrogen fuel cells" loading="lazy" width="1000" height="750"><figcaption>Generation</figcaption></figure>
         <figure><img src="img/model-transmission.jpg" alt="Transmission zone of the scale model: lit pylons and transformers" loading="lazy" width="1000" height="750"><figcaption>Transmission</figcaption></figure>
